@@ -1,4 +1,4 @@
-# GitHub101
+# GitHub 101
 Repository used for demonstration.
 
 Please try the following:
