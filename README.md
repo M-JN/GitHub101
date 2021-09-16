@@ -1,7 +1,6 @@
 # GitHub 101
-Repository used for demonstration.
 
-Please try the following:
+Repository used for demonstration, feel free to experiment! Additionally, please try to do the following:
   1. Create a new branch from the main;
   2. Commit changes to the sub-branch;
   3. Create a Pull Request (PR);
