@@ -9,12 +9,13 @@ import tensorflow as tf
 from tensorflow.keras.models import Model
 from tensorflow.keras.layers import GlobalAveragePooling2D, Dropout, Dense
    
-## EfficientNetB0 implementation for image classification testing ##
+## EfficientNetB0 model for image classification testing ##
 def EfficientNet_B0(height, width, channel, num_classes, learning_rate = 1e-3):
     """
     Pre-trained model on ImageNet dataset
     Input images need to have the following dimensions: (heigh - 224, width- 224, RBG channels - 3)
     """
+      
     # Define training hyperparameters based on the number of classes
     if len(num_classes) == 2:
         parameters = {'Activation': 'sigmoid',
@@ -24,7 +25,8 @@ def EfficientNet_B0(height, width, channel, num_classes, learning_rate = 1e-3):
         parameters = {'Activation': 'softmax',
                       'Loss': 'categorical_crossentropy',
                       'Metrics': 'categorical_accuracy'}
-
+   
+    # Define input shape and load ImageNet trained weights and biases
     X_input = tf.keras.Input(shape = (height, width, channel))
     model = tf.keras.applications.EfficientNetB0(include_top = False, input_tensor = X_input, weights = 'imagenet')
 
@@ -41,4 +43,5 @@ def EfficientNet_B0(height, width, channel, num_classes, learning_rate = 1e-3):
     custom_model.compile(optimizer = tf.keras.optimizers.Adam(learning_rate = learning_rate),
                          loss = parameters['Loss'],
                          metrics = parameters['Metrics'])
+    
     return custom_model
