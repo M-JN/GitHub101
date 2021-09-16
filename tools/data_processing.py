@@ -14,6 +14,7 @@ import numpy as np
 def sorted_alphanumeric(data):
     convert = lambda text: int(text) if text.isdigit() else text.lower()
     alphanum_key = lambda key: [ convert(c) for c in re.split('([0-9]+)', key)]
+    
     return sorted(data, key = alphanum_key)
 
 ## Data normalization using the Z-score approach between [-1, 1] ##
@@ -28,10 +29,12 @@ def data_normalization(input_data):
 def bin_creation(variable, filename):
     with open(filename, 'wb') as f:
         pickle.dump(variable, f)
+    
     print('{} has been created.'.format(filename))
 
 ## Load .bin files ##
 def bin_load(filename):
     with open(filename, 'rb') as f:
         variable_name = pickle.load(f)
+    
     return variable_name
